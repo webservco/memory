@@ -25,7 +25,8 @@
     "license" : "MIT",
     "name" : "webservco/memory",
     "require": {
-        "php" : "^8.2"
+        "php" : "^8.2",
+        "ext-shmop": "*"
     },
     "require-dev": {
         "pds/skeleton": "^1",
