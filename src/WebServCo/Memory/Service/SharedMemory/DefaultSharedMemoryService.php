@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace WebServCo\Memory\Service\SharedMemory;
 
 use OutOfBoundsException;
+use Override;
 use Shmop;
 use Throwable;
 use UnexpectedValueException;
@@ -32,6 +33,7 @@ final class DefaultSharedMemoryService implements SharedMemoryInterface
     {
     }
 
+    #[Override]
     public function delete(string $identifier): bool
     {
         if (!array_key_exists($identifier, $this->shmopList)) {
@@ -41,6 +43,7 @@ final class DefaultSharedMemoryService implements SharedMemoryInterface
         return shmop_delete($this->shmopList[$identifier]);
     }
 
+    #[Override]
     public function read(string $identifier): string
     {
         $shmop = $this->getShmop($identifier);
@@ -54,6 +57,7 @@ final class DefaultSharedMemoryService implements SharedMemoryInterface
         return trim($string);
     }
 
+    #[Override]
     public function write(string $data, string $identifier): bool
     {
         $shmop = $this->getShmop($identifier);
